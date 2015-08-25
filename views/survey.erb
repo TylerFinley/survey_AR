@@ -1,0 +1,26 @@
+<h1>Manage Your Surveys!</h1>
+
+<% if @surveys.any?() %>
+
+  <h3>Here are the surveys!</h3>
+
+  <ul>
+    <% @surveys.each() do |survey| %>
+      <li><%= survey.name() %></li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+  <h3>THERE AREN'T ANY SURVEYS!</h3>
+
+<% end %>
+
+<form action="/surveys" method="post">
+  <div class="form-group">
+    <label for="name">Name Survey:</label>
+    <input type="text" name="name" id="name" class="form-control">
+
+    <button type="submit" class="btn btn-primary">Submit!</button>
+  </div>
+</form>
