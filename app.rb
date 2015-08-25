@@ -69,3 +69,12 @@ patch("/questions/:id") do
   @question = Question.find(params.fetch("id").to_i)
   erb(:view_question)
 end
+
+delete("/questions/:id") do
+  question = Question.find(params.fetch("id").to_i())
+  @survey = Survey.find(question.survey_id())
+  question.delete()
+  @surveys = Survey.all()
+  @questions = Question.all()
+  erb(:view_survey)
+end

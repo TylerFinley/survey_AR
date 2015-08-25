@@ -54,4 +54,14 @@ describe("/questions/:id", {type: :feature}) do
     click_button("Update!")
     expect(page).to have_content("Why?")
   end
+
+  it("will allow the user to delete a question") do
+    test_survey = Survey.new({name: 'Red Survey'})
+    test_survey.save()
+    test_question = Question.new({description: 'hha', survey_id: test_survey.id()})
+    test_question.save()
+    visit("/questions/#{test_question.id}")
+    click_button("Delete")
+    expect(page).to have_no_content("Hha")
+  end
 end
