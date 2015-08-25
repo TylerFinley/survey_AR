@@ -1,31 +1,30 @@
 <h1>Manage Your Surveys!</h1>
 
-<% if @surveys.any?() %>
+<div class="well">
+  <% if @surveys.any?() %>
 
-  <h3>Here are the surveys!</h3>
+    <h3>Here are the surveys!</h3>
 
-  <ul>
-    <% @surveys.each() do |survey| %>
-      <li>
-        <a href="/surveys/<%= survey.id %>"><%= survey.name() %></a>
-      </li>
-    <% end %>
-  </ul>
+    <ul>
+      <% @surveys.each() do |survey| %>
+        <li>
+          <a href="/surveys/<%= survey.id %>"><%= survey.name() %></a>
+        </li>
+      <% end %>
+    </ul>
 
-<% else %>
+  <% else %>
 
-  <h3>THERE AREN'T ANY SURVEYS!</h3>
+    <h3>THERE AREN'T ANY SURVEYS!</h3>
 
-<% end %>
+  <% end %>
 
-<form action="/surveys" method="post">
-  <div class="form-group">
-    <label for="name">Name Survey:</label>
-    <input type="text" name="name" id="name" class="form-control">
-    <br>
-    <button type="submit" class="btn btn-primary">Submit!</button>
-  </div>
-</form>
-
-
-<h6><a href="/">Back Home</a></h6>
+  <form action="/surveys" method="post">
+    <div class="form-group">
+      <label for="name">Name Survey:</label>
+      <input type="text" name="name" id="name" class="form-control">
+      <br>
+      <button type="submit" class="btn btn-primary">Submit!</button>
+    </div>
+  </form>
+</div>

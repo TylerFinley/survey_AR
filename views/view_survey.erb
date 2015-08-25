@@ -1,53 +1,51 @@
 <h1><%= @survey.name %></h1>
 
+<div class="well">
+  <form action="/surveys/<%= @survey.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <div class = "form-group">
+      <label for="name">Rename Survey!</label>
+      <input type="text" name="name" id = "name" class = "form-control">
+      <br>
+      <button type = "submit" class="btn btn-primary">Update!</button>
+    </div>
+  </form>
 
-<form action="/surveys/<%= @survey.id %>" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <div class = "form-group">
-    <label for="name">Rename Survey!</label>
-    <input type="text" name="name" id = "name" class = "form-control">
-    <br>
-    <button type = "submit" class="btn btn-primary">Update!</button>
-  </div>
-</form>
+  <form action="/surveys/<%= @survey.id() %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" class="btn btn-primary">Delete</button>
+  </form>
+</div>
 
-<form action="/surveys/<%= @survey.id() %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button type="submit" class="btn btn-primary">Delete</button>
-</form>
+<div class="well">
+  <% if @questions.any?() %>
 
+    <h3>Here are the questions for selected survey!</h3>
 
-<% if @questions.any?() %>
+    <ul>
+      <% @survey.questions.each() do |question| %>
+        <li>
+          <a href="/questions/<%= question.id() %>"><%= question.description %></a>
+        </li>
+      <% end %>
+    </ul>
 
-  <h3>Here are the questions for selected survey!</h3>
+  <% else %>
 
-  <ul>
-    <% @survey.questions.each() do |question| %>
-      <li>
-        <a href="/questions/<%= question.id() %>"><%= question.description %></a>
-      </li>
-    <% end %>
-  </ul>
+    <h3>THERE AREN'T ANY QUESTIONS!</h3>
 
-<% else %>
+  <% end %>
 
-  <h3>THERE AREN'T ANY QUESTIONS!</h3>
-
-<% end %>
-
-<h3>Add Question to survey</h3>
-
-
-<form action="/surveys/<%= @survey.id() %>" method="post">
-  <div class="form-group">
-    <input type="hidden" name="survey_id" id="survey_id" value="<%= @survey.id() %>">
-    <label for="description">Submit Question:</label>
-    <input type="text" name="description" id="description" class="form-control">
-    <br>
-    <button type="submit" class="btn btn-primary">Submit!</button>
-  </div>
-</form>
+  <h3>Add Question to survey</h3>
 
 
-<h6><a href="/surveys">Back to Surveys</a></h6>
-<h6><a href="/">Back Home</a></h6>
+  <form action="/surveys/<%= @survey.id() %>" method="post">
+    <div class="form-group">
+      <input type="hidden" name="survey_id" id="survey_id" value="<%= @survey.id() %>">
+      <label for="description">Submit Question:</label>
+      <input type="text" name="description" id="description" class="form-control">
+      <br>
+      <button type="submit" class="btn btn-primary">Submit!</button>
+    </div>
+  </form>
+</div>

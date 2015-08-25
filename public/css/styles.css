@@ -1,0 +1,51 @@
+body {
+  background: url("https://thetwist03.files.wordpress.com/2011/09/ziggy-phone-survey-cartoon-waste-of-time.png") repeat center center fixed;
+  color: white;
+}
+
+.navbar {
+  background-color: rgba(255, 255, 255, .8);
+  color: black;
+}
+
+.navbar-default .navbar-nav li a {
+  color: black;
+}
+
+.navbar-default .navbar-brand {
+  color: black;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: white;
+}
+
+.jumbotron {
+  background-color: rgba(0,0,0,.8);
+  margin: 20px;
+}
+
+.jumbotron .container h1 {
+  text-align: center;
+}
+
+.jumbotron .container h2 {
+  text-align: center;
+}
+
+.jumbotron .container h5 {
+  text-align: center;
+}
+
+li {
+  list-style: none;
+}
+
+.jumbotron .container .well {
+  background-color: rgba(0,0,0,.4);
+  margin-top: 20px;
+}
