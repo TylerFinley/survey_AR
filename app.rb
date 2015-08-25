@@ -54,3 +54,18 @@ post('/surveys/:id') do
   @survey = Survey.find(params.fetch("id").to_i)
   erb(:view_survey)
 end
+
+get("/questions/:id") do
+  @question = Question.find(params.fetch("id").to_i())
+  @survey = Survey.find(@question.survey_id())
+  erb(:view_question)
+end
+
+patch("/questions/:id") do
+  @question = Question.find(params.fetch("id").to_i)
+  description = params.fetch('description')
+  @question.update({description: description})
+  @survey = Survey.find(@question.survey_id())
+  @question = Question.find(params.fetch("id").to_i)
+  erb(:view_question)
+end

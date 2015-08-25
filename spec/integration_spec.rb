@@ -40,5 +40,18 @@ describe('/surveys/:id', {type: :feature}) do
     click_button("Submit!")
     expect(page).to have_content("Hha")
   end
+end
 
+
+describe("/questions/:id", {type: :feature}) do
+  it("will allow the user to edit a question") do
+    test_survey = Survey.new({name: 'Red Survey'})
+    test_survey.save()
+    test_question = Question.new({description: 'hha', survey_id: test_survey.id()})
+    test_question.save()
+    visit("/questions/#{test_question.id}")
+    fill_in("description", with: "why?")
+    click_button("Update!")
+    expect(page).to have_content("Why?")
+  end
 end

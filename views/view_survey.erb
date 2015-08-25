@@ -24,7 +24,7 @@
   <ul>
     <% @survey.questions.each() do |question| %>
       <li>
-        <%= question.description %>
+        <a href="/questions/<%= question.id() %>"><%= question.description %></a>
       </li>
     <% end %>
   </ul>
