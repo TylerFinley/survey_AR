@@ -34,6 +34,13 @@ patch("/surveys/:id") do
   erb(:view_survey)
 end
 
+delete("/surveys/:id") do
+  survey = Survey.find(params.fetch("id").to_i)
+  survey.delete()
+  @surveys = Survey.all()
+  erb(:survey)
+end
+
 get("/questions") do
   erb(:question)
 end
