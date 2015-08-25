@@ -22,6 +22,18 @@ post("/surveys") do
   erb(:survey)
 end
 
+get("/surveys/:id") do
+  @survey = Survey.find(params.fetch("id").to_i)
+  erb(:view_survey)
+end
+
+patch("/surveys/:id") do
+  @survey = Survey.find(params.fetch("id").to_i)
+  name = params.fetch("name")
+  @survey.update({:name => name})
+  erb(:view_survey)
+end
+
 get("/questions") do
   erb(:question)
 end

@@ -6,7 +6,7 @@
 
   <ul>
     <% @surveys.each() do |survey| %>
-      <li><%= survey.name() %></li>
+      <li><a href="/surveys/<%= survey.id %>"><%= survey.name() %></a></li>
     <% end %>
   </ul>
 
@@ -20,7 +20,7 @@
   <div class="form-group">
     <label for="name">Name Survey:</label>
     <input type="text" name="name" id="name" class="form-control">
-
+    <br>
     <button type="submit" class="btn btn-primary">Submit!</button>
   </div>
 </form>
